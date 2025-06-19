@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Title -->
+    <title>WearView IT Support – Staff Login to Report Technical Issues</title>
+
+    <!-- Meta Description (SEO + Social Sharing) -->
+    <meta name="description"
+        content="Log in to the WearView Academy IT Support portal to report classroom or technical issues. Fast, simple fault reporting for staff.">
+
+    <!-- Open Graph (Facebook, LinkedIn) -->
+    <meta property="og:title" content="WearView IT Support – Report Technical Issues">
+    <meta property="og:description"
+        content="Easily report IT issues at WearView Academy. Staff can log in to submit faults like projector or computer problems.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/login">
+    <meta property="og:image" content="https://yourdomain.com/images/og-preview.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="WearView IT Support – Staff Login">
+    <meta name="twitter:description"
+        content="Quick and accessible fault reporting for WearView Academy staff. Log in to submit an IT issue.">
+    <meta name="twitter:image" content="https://yourdomain.com/images/twitter-preview.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Styles -->
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+        :root {
+            --primary-color: rgb(147, 215, 252);
+            --secondary-color: rgb(32, 62, 100);
+            --text-color: rgb(255, 255, 255);
+            --text-black: rgb(0, 0, 0);
+            --bg-color: rgb(0, 0, 0);
+            --font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .page-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: pageFadeIn 0.8s ease-out forwards;
+        }
+
+        @keyframes pageFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .illustration-fade {
+            opacity: 0;
+            animation: fadeInUp 1s 0.3s forwards;
+        }
+
+        .avatar-fade {
+            opacity: 0;
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        .avatar-1 {
+            animation-delay: 0.5s;
+        }
+
+        .avatar-2 {
+            animation-delay: 0.7s;
+        }
+
+        .avatar-3 {
+            animation-delay: 0.9s;
+        }
+
+        .avatar-4 {
+            animation-delay: 1.1s;
+        }
+
+        .avatar-5 {
+            animation-delay: 1.3s;
+        }
+
+        .avatar-6 {
+            animation-delay: 1.5s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .form-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s 1.7s forwards;
+        }
+
+        [class^="avatar_"] {
+            width: 50px;
+            height: auto;
+            position: absolute;
+            animation: floatAvatar 2s infinite ease-in-out;
+        }
+
+        .avatar_1 {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .avatar_2 {
+            top: 30px;
+            left: 60px;
+        }
+
+        .avatar_3 {
+            bottom: 60px;
+            left: 120px;
+        }
+
+        .avatar_4 {
+            top: 80px;
+            right: 40px;
+        }
+
+        .avatar_5 {
+            bottom: 40px;
+            right: 90px;
+        }
+
+        .avatar_6 {
+            top: 20px;
+            right: 120px;
+        }
+
+        @keyframes floatAvatar {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+
+<body class="page-animate min-h-screen">
+    <div
+        class="flex flex-col md:flex-row justify-between items-center mt-20 px-8 md:px-14 min-h-[calc(100vh-80px-5rem)]">
+        <!-- Illustration Section -->
+        <div class="w-full md:w-2/5 h-[500px] flex items-center justify-center relative mb-8 md:mb-0">
+            <img src="/images/illustration/support.png"
+                class="w-[350px] h-auto object-contain rounded-[30px] illustration-fade" alt="IT Support Illustration">
+            <img src="/images/avatar/Avatar 2.png" class="avatar_1 avatar-fade" alt="">
+            <img src="/images/avatar/Avatar 3.png" class="avatar_2 avatar-fade" alt="">
+            <img src="/images/avatar/Avatar 4.png" class="avatar_3 avatar-fade" alt="">
+            <img src="/images/avatar/Avatar 5.png" class="avatar_4 avatar-fade" alt="">
+            <img src="/images/avatar/Avatar 6.png" class="avatar_5 avatar-fade" alt="">
+            <img src="/images/avatar/Avatar 7.png" class="avatar_6 avatar-fade" alt="">
+        </div>
+
+        <!-- Login Form -->
+        <form
+            class="w-full md:w-[480px] p-8 bg-[#061223] rounded-[30px] text-center flex flex-col items-center justify-center gap-2.5 form-fade"
+            id="login-form" method="POST" action="/login">
+            <img src="/images/logo/wearview_academy_logo.png" alt="WearView Academy" class="w-[200px] h-auto">
+            <h3 class="text-4xl font-semibold m-0">Report A Classroom Tech Issue</h3>
+            <p class="text-xl font-normal">Welcome back, Teacher! Let's fix your tech.</p>
+
+            <div class="flex flex-col items-center justify-center gap-5 w-full">
+                <input type="text"
+                    class="w-full p-4 rounded-[30px] border border-white text-xl font-normal bg-white/20 text-white outline-none placeholder:text-white"
+                    placeholder="Username" id="username" name="username" required>
+                <input type="password"
+                    class="w-full p-4 rounded-[30px] border border-white text-xl font-normal bg-white/20 text-white outline-none placeholder:text-white"
+                    placeholder="Password" id="password" name="password" required>
+            </div>
+
+            <% if (typeof error !=='undefined' && error && error !==null && error !=='' && error !=='undefined' ) { %>
+                <span id="validation-msg" class="text-red-400 text-sm mt-2.5">
+                    <%= error %>
+                </span>
+                <% } else { %>
+                    <span id="validation-msg"></span>
+                    <% } %>
+
+                        <!-- Debug info (remove in production) -->
+                        <% if (typeof error !=='undefined' ) { %>
+                            <!-- Error value: "<%= error %>" -->
+                            <% } %>
+
+                                <span class="text-base font-normal mt-2.5">
+                                    Having trouble Signing In? <a href="/forgot-password"
+                                        class="text-white hover:text-blue-300 transition-colors">Forgot Password</a>
+                                </span>
+
+                                <button type="submit"
+                                    class="p-4 rounded-[30px] text-xl font-semibold cursor-pointer border-none outline-none transition-all duration-300 mt-5 w-fit bg-[rgb(147,215,252)] text-black hover:bg-[rgb(32,62,100)] hover:text-white">
+                                    Login
+                                </button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer
+        class="absolute bottom-0 left-0 w-full min-h-[80px] bg-[#061223] flex flex-col-reverse items-center justify-center gap-2.5 z-10">
+        <span class="text-base font-medium">© 2025 WearView Academy</span>
+        <span>
+            <a href="/contact-support" class="text-white hover:text-blue-300 transition-colors">
+                Don't have an account? <span class="text-[rgb(147,215,252)] underline font-bold">Contact Support.</span>
+            </a>
+        </span>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const loginForm = document.getElementById("login-form");
+            const username = document.getElementById("username");
+            const password = document.getElementById("password");
+            const validationMsg = document.getElementById("validation-msg");
+
+            loginForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+                const usernameValue = username.value.trim();
+                const passwordValue = password.value;
+
+                // Clear previous error messages
+                validationMsg.textContent = "";
+                validationMsg.style.color = "";
+
+                // Only validate basic format - let server handle authentication
+                if (!usernameValue) {
+                    validationMsg.textContent = "Username is required";
+                    validationMsg.style.color = "#ff6b6b";
+                    return;
+                }
+
+                if (!passwordValue) {
+                    validationMsg.textContent = "Password is required";
+                    validationMsg.style.color = "#ff6b6b";
+                    return;
+                }
+
+                // Submit form via fetch to avoid page reload
+                const data = new URLSearchParams();
+                data.append('username', usernameValue);
+                data.append('password', passwordValue);
+
+                fetch('/login', {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Accept': 'application/json, text/html, */*',
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json().catch(() => response.text());
+                        } else {
+                            return response.text();
+                        }
+                    })
+                    .then(data => {
+                        if (typeof data === 'object' && data.success) {
+                            // Successful login - redirect to dashboard
+                            window.location.href = data.redirect;
+                        } else if (typeof data === 'string') {
+                            // Failed login - parse HTML to extract error message
+                            const parser = new DOMParser();
+                            const doc = parser.parseFromString(data, 'text/html');
+                            const errorElement = doc.querySelector('#validation-msg');
+                            if (errorElement && errorElement.textContent.trim()) {
+                                validationMsg.textContent = errorElement.textContent.trim();
+                                validationMsg.style.color = "#ff6b6b";
+                            } else {
+                                validationMsg.textContent = "Invalid username or password";
+                                validationMsg.style.color = "#ff6b6b";
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Login error:', error);
+                        validationMsg.textContent = "An error occurred. Please try again.";
+                        validationMsg.style.color = "#ff6b6b";
+                    });
+            });
+        });
+    </script>
+</body>
+
+</html>

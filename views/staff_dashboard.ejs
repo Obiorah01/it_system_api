@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WearView IT Support – Report Technical Issues</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Custom Styles -->
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+        :root {
+            --primary-color: rgb(147, 215, 252);
+            --secondary-color: rgb(32, 62, 100);
+            --text-color: rgb(255, 255, 255);
+            --text-black: rgb(0, 0, 0);
+            --bg-color: rgb(0, 0, 0);
+            --font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .page-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: pageFadeIn 0.8s ease-out forwards;
+        }
+
+        @keyframes pageFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body class="page-animate min-h-screen">
+    <div class="flex flex-col items-center justify-center gap-5 p-4 w-full">
+        <form
+            class="w-full max-w-[500px] p-8 bg-[#061223] rounded-[30px] text-center flex flex-col items-center justify-start gap-4 form-fade min-h-screen my-[100px]"
+            id="request-form" method="POST" action="/submit-issue">
+            <img src="/images/logo/wearview_academy_logo.png" alt="WearView Academy" class="w-[200px] h-auto">
+            <h3 class="text-3xl font-semibold m-0">Welcome <%= typeof username !=='undefined' ? username
+                    : 'Staff Member' %>
+            </h3>
+            <p class="text-xl font-normal m-0 leading-relaxed italic">
+                Having trouble with your classroom tech?<br>
+                Fill out the form below to let the IT team know.
+            </p>
+
+            <div class="flex flex-row items-center justify-center gap-5 w-full flex-wrap">
+                <input type="text"
+                    class="w-full p-4 rounded-[30px] border border-white text-xl font-normal bg-white/20 text-white outline-none placeholder:text-white resize-none"
+                    placeholder="Full Name" id="fullName" name="name"
+                    value="<%= typeof formData !== 'undefined' && formData ? formData.name : '' %>" required>
+                <input type="email"
+                    class="w-full p-4 rounded-[30px] border border-white text-xl font-normal bg-white/20 text-white outline-none placeholder:text-white"
+                    placeholder="Email Address" id="emailAddress" name="email"
+                    value="<%= typeof formData !== 'undefined' && formData ? formData.email : '' %>" required>
+            </div>
+
+            <div class="flex flex-row items-center justify-center gap-5 w-full flex-wrap">
+                <input type="text"
+                    class="w-full p-4 rounded-[30px] border border-white text-xl font-normal bg-white/20 text-white outline-none placeholder:text-white"
+                    placeholder="Fault Location" id="faultLocation" name="location"
+                    value="<%= typeof formData !== 'undefined' && formData ? formData.location : '' %>" required>
+            </div>
+
+            <div class="flex flex-row items-center justify-center gap-5 w-full flex-wrap">
+                <textarea id="faultDescription"
+                    class="w-full p-4 rounded-[30px] border border-white text-xl font-normal bg-white/20 text-white outline-none placeholder:text-white resize-none"
+                    placeholder="Problem Description" name="description" rows="6"
+                    required><%= typeof formData !== 'undefined' && formData ? formData.description : '' %></textarea>
+            </div>
+
+            <% if (typeof success !=='undefined' && success) { %>
+                <div class="text-green-400 text-sm mt-2.5 p-2.5 bg-green-400/10 rounded-[10px] border border-green-400">
+                    ✅ Your issue has been submitted successfully!
+                </div>
+                <% } %>
+
+                    <% if (typeof error !=='undefined' && error) { %>
+                        <div
+                            class="text-red-400 text-sm mt-2.5 p-2.5 bg-red-400/10 rounded-[10px] border border-red-400">
+                            ❌ <%= error %>
+                        </div>
+                        <% } %>
+
+                            <span id="request-validation-msg"></span>
+
+                            <button type="submit"
+                                class="p-4 rounded-[30px] text-xl font-semibold cursor-pointer border-none outline-none transition-all duration-300 mt-5 w-fit bg-[rgb(147,215,252)] text-black hover:bg-[rgb(32,62,100)] hover:text-white">
+                                Submit
+                            </button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer
+        class="absolute bottom-0 left-0 w-full min-h-[80px] bg-[#061223] flex flex-col-reverse items-center justify-center gap-2.5 z-10">
+        <span class="text-base font-medium">© 2025 WearView Academy</span>
+        <div class="flex flex-wrap gap-2.5 items-center justify-center">
+            <span>
+                <a href="/contact-support" class="text-white hover:text-blue-300 transition-colors">
+                    Need Help? <span class="text-[rgb(147,215,252)] underline font-bold">Contact IT Support.</span>
+                </a>
+            </span>
+            <span>|</span>
+            <span>
+                <a href="/privacy-policy" class="text-white hover:text-blue-300 transition-colors">Privacy Policy</a>
+            </span>
+            <span>|</span>
+            <span>
+                <a href="/terms" class="text-white hover:text-blue-300 transition-colors">Terms</a>
+            </span>
+            <span>|</span>
+            <span>
+                <a href="/accessibility-info" class="text-white hover:text-blue-300 transition-colors">Accessibility
+                    Info</a>
+            </span>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const requestForm = document.getElementById("request-form");
+            const fullName = document.getElementById("fullName");
+            const emailAddress = document.getElementById("emailAddress");
+            const faultLocation = document.getElementById("faultLocation");
+            const faultDescription = document.getElementById("faultDescription");
+            const validationMsg = document.getElementById("request-validation-msg");
+
+            // Auto-hide success/error messages after 5 seconds
+            setTimeout(() => {
+                const alerts = document.querySelectorAll('[class*="text-green-400"], [class*="text-red-400"]');
+                alerts.forEach(alert => {
+                    alert.style.transition = 'opacity 0.5s ease-out';
+                    alert.style.opacity = '0';
+                    setTimeout(() => alert.remove(), 500);
+                });
+            }, 5000);
+
+            requestForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+                const nameValue = fullName.value.trim();
+                const emailValue = emailAddress.value.trim();
+                const locationValue = faultLocation.value.trim();
+                const descriptionValue = faultDescription.value.trim();
+
+                // Clear previous error messages
+                validationMsg.textContent = "";
+                validationMsg.style.color = "";
+
+                // Client-side validation
+                if (!nameValue) {
+                    validationMsg.textContent = "Full Name is required";
+                    validationMsg.style.color = "#ff6b6b";
+                    return;
+                }
+                if (!/^[A-Za-z\s]+$/.test(nameValue)) {
+                    validationMsg.textContent = "Name must contain only letters and spaces";
+                    validationMsg.style.color = "#ff6b6b";
+                    return;
+                }
+                if (!emailValue) {
+                    validationMsg.textContent = "Email Address is required";
+                    validationMsg.style.color = "#ff6b6b";
+                    return;
+                }
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
+                    validationMsg.textContent = "Please enter a valid email address";
+                    validationMsg.style.color = "#ff6b6b";
+                    return;
+                }
+                if (!locationValue) {
+                    validationMsg.textContent = "Fault Location is required";
+                    validationMsg.style.color = "#ff6b6b";
+                    return;
+                }
+                if (!descriptionValue) {
+                    validationMsg.textContent = "Problem Description is required";
+                    validationMsg.style.color = "#ff6b6b";
+                    return;
+                }
+                if (descriptionValue.length < 10) {
+                    validationMsg.textContent = "Description must be at least 10 characters long";
+                    validationMsg.style.color = "#ff6b6b";
+                    return;
+                }
+
+                // AJAX submission
+                const data = new URLSearchParams();
+                data.append('name', nameValue);
+                data.append('email', emailValue);
+                data.append('location', locationValue);
+                data.append('description', descriptionValue);
+
+                fetch('/submit-issue', {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Accept': 'application/json, text/html, */*',
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                })
+                    .then(response => response.json())
+                    .then(result => {
+                        if (result.success) {
+                            window.location.href = result.redirect;
+                        } else if (result.error) {
+                            validationMsg.textContent = result.error;
+                            validationMsg.style.color = "#ff6b6b";
+                        }
+                    })
+                    .catch(error => {
+                        validationMsg.textContent = "An error occurred. Please try again.";
+                        validationMsg.style.color = "#ff6b6b";
+                    });
+            });
+
+            // Real-time validation feedback
+            [fullName, emailAddress, faultLocation, faultDescription].forEach(field => {
+                field.addEventListener("input", function () {
+                    if (validationMsg.textContent) {
+                        validationMsg.textContent = "";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
