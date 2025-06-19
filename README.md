@@ -75,8 +75,5 @@ it_system_api/
 └── README.md             # Project documentation
 ```
 
-## Testing
-- See `tests.md` (if available) for a full list of test cases and manual test instructions.
-
 ## License
 MIT (or specify your license)
